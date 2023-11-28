@@ -16,24 +16,12 @@ public class PrincipaleJDBC {
 
         // creation de la table Personne
         {
-            String createString = "CREATE TABLE Personne ( " + "ID INTEGER  AUTO_INCREMENT, "
-                    + "NOM varchar(40) NOT NULL, " + "PRENOM varchar(40) NOT NULL, " + "PRIMARY KEY (ID))";
-            Statement stmt = connect.createStatement();
-            stmt.executeUpdate(createString);
-            System.out.println("1) creation table Personne\n");
+
         }
 
         // ajout de personne avec requete preparee
         {
-            String SQLPrep = "INSERT INTO Personne (nom, prenom) VALUES (?,?);";
-            PreparedStatement prep;
-            // l'option RETURN_GENERATED_KEYS permet de recuperer l'id (car
-            // auto-increment)
-            prep = connect.prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
-            prep.setString(1, "Spielberg");
-            prep.setString(2, "Steven");
-            prep.executeUpdate();
-            System.out.println("2) ajout Steven Spielberg\n");
+
         }
 
         // ajout second personne
