@@ -17,7 +17,7 @@ public class Personne {
     }
 
     public static ArrayList<Personne> findAll() throws SQLException {
-        ArrayList<Personne> listPersonne = new ArrayList<Personne>();
+        ArrayList<Personne> listPersonne = new ArrayList<>();
 
         Connection connect = DBConnection.getInstance().getConnection();
 
@@ -76,6 +76,7 @@ public class Personne {
             p.id = id;
             listPersonne.add(p);
         }
+        listPersonne.add(new Personne("sa","marche"));
 
         return listPersonne;
     }
@@ -127,7 +128,18 @@ public class Personne {
 
     }
 
-    public 
+    public void save() throws SQLException {
+        if(this.id == -1){
+            saveNew(this);
+        }else{
+            update();
+        }
+    }
+
+    private void saveNew(Personne p) throws SQLException {
+        insertion(p);
+        findByName(p.getNom());
+    }
 
 
 }
