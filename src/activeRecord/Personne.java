@@ -2,7 +2,6 @@ package activeRecord;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Personne {
 
@@ -76,8 +75,6 @@ public class Personne {
             p.id = id;
             listPersonne.add(p);
         }
-        listPersonne.add(new Personne("sa","marche"));
-
         return listPersonne;
     }
 
@@ -90,7 +87,11 @@ public class Personne {
         System.out.println("1) creation table Personne\n");
     }
 
-    public static void supTable() throws SQLException {
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public static void deleteTable() throws SQLException {
         Connection connect = DBConnection.getInstance().getConnection();
 
         String drop = "DROP TABLE Personne";
@@ -125,20 +126,21 @@ public class Personne {
             prep.executeUpdate();
             System.out.println("2) ajout de " + p.getPrenom() + " " + p.getNom() + "\n");
         }
-
     }
 
     public void save() throws SQLException {
-        if(this.id == -1){
+        if (this.id == -1) {
             saveNew(this);
-        }else{
-            update();
+        } else {
+            //update();
         }
     }
 
     private void saveNew(Personne p) throws SQLException {
         insertion(p);
-        findByName(p.getNom());
+
+
+
     }
 
 
